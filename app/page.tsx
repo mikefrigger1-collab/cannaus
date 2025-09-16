@@ -24,9 +24,9 @@ export async function generateMetadata() {
     _count: { category: true }
   })
 
-  const stateCount = categoryStats.filter(stat => 
-    ['nsw', 'vic', 'qld', 'wa', 'sa', 'tas', 'act', 'nt'].includes(stat.category)
-  ).length
+const stateCount = categoryStats.filter(stat => 
+  stat.category && ['nsw', 'vic', 'qld', 'wa', 'sa', 'tas', 'act', 'nt'].includes(stat.category)
+).length
 
   // Get most recent article for freshness
   const latestArticle = await prisma.article.findFirst({
