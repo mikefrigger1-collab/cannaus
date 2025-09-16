@@ -243,31 +243,31 @@ export default async function ArticlePage({ params }) {
 
         <main className="max-w-7xl mx-auto px-4 py-8">
           {/* Breadcrumb Navigation */}
-          <nav className="mb-8" aria-label="Breadcrumb">
-            <ol className="flex justify-center space-x-2 text-sm">
-              <li>
-                <Link href="/" className="text-gray-600 hover:text-gray-900 hover:underline transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li className="text-gray-400">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                </svg>
-              </li>
-              <li>
-                <Link href={`/${category}`} className="text-gray-600 hover:text-gray-900 hover:underline transition-colors">
-                  {formatStateName(category)}
-                </Link>
-              </li>
-              <li className="text-gray-400">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                </svg>
-              </li>
-              <li className="text-gray-900 font-medium">{article.title}</li>
-            </ol>
-          </nav>
+<nav className="mb-8" aria-label="Breadcrumb">
+  <ol className="flex items-center justify-center space-x-2 text-sm">
+    <li>
+      <Link href="/" className="text-gray-600 hover:text-gray-900 hover:underline transition-colors">
+        Home
+      </Link>
+    </li>
+    <li className="text-gray-400 flex items-center">
+      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+        <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+      </svg>
+    </li>
+    <li>
+      <Link href={`/${category}`} className="text-gray-600 hover:text-gray-900 hover:underline transition-colors">
+        {formatStateName(category)}
+      </Link>
+    </li>
+    <li className="text-gray-400 flex items-center">
+      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+        <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+      </svg>
+    </li>
+    <li className="text-gray-900 font-medium">{article.title}</li>
+  </ol>
+</nav>
 
           <div className="lg:grid lg:grid-cols-12 lg:gap-8">
             {/* Main Content */}
@@ -309,7 +309,7 @@ export default async function ArticlePage({ params }) {
                 {/* Article Header */}
                 <header className="px-8 pt-8 pb-6">
                   <div className="flex items-center space-x-4 mb-4">
-                    <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                    <span className="bg-green-100 text-green-800 px-3 py-1 text-sm font-medium">
                       {formatStateName(category)}
                     </span>
                     <time className="text-gray-500 text-sm" dateTime={article.createdAt}>

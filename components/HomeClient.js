@@ -226,7 +226,7 @@ function LoadMoreArticles({ initialArticles, excludeIds }) {
           </p>
 
           <div className="flex sm:flex-row sm:items-center gap-2 mb-2">
-            <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${getStateColor(article.category)} w-fit`}>
+            <span className={`inline-flex items-center px-2 py-1 text-xs font-medium ${getStateColor(article.category)} w-fit`}>
               {formatStateName(article.category)}
             </span>
             <time className="text-xs text-gray-500">

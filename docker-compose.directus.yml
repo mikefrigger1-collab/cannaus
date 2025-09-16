@@ -13,8 +13,8 @@ services:
       SECRET: "your-super-long-random-secret-replace-this-with-keyboard-smashing"
       
       # Your admin login credentials (YOU choose these!)
-      ADMIN_EMAIL: "admin@yoursite.com"
-      ADMIN_PASSWORD: "your-secure-password-123"
+      ADMIN_EMAIL: "mike@frigger.com.au"
+      ADMIN_PASSWORD: "398fnpdfn93qnfkjlnf9affu39hjn"
       
       # Connect to your NEW PostgreSQL database (same as your website uses)
       DB_CLIENT: "pg"
@@ -22,10 +22,10 @@ services:
       
       # Allow your Next.js website to talk to Directus
       CORS_ENABLED: "true"
-      CORS_ORIGIN: "http://localhost:3000,https://your-vercel-site.vercel.app"
+      CORS_ORIGIN: "https://www.cannaus.com.au/"
       
       # The URL where you'll access the admin panel
-      PUBLIC_URL: "http://localhost:8055"
+      PUBLIC_URL: "https://admin.cannaus.com.au/"
       
       # File storage settings
       STORAGE_LOCATIONS: "local"
