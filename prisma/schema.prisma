@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"          // New provider
+  url      = env("DATABASE_URL")   // Use environment variable
+}
+
+model Article {
+  id               Int      @id @default(autoincrement())
+  title            String
+  content          String
+  slug             String   @unique
+  type             String   @default("post")
+  published        Boolean  @default(false)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime
+  category         String?
+  featuredImage    String?
+  featuredImageUrl String?
+  featuredImageAlt String?
+  
+  // Add the relation to comments
+  comments         Comment[]
+
+  @@index([category, published], map: "idx_articles_category_published")
+  @@index([featuredImageUrl], map: "idx_articles_featured_image_url")
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  content   String   // Remove @db.Text for SQLite
+  author    String
+  
+  // WordPress migration fields
+  wpCommentId Int?    @unique
+  wpParentId  Int?
+  
+  // Moderation
+  approved  Boolean  @default(false)
+  spam      Boolean  @default(false)
+  
+  // Relationships
+  article   Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  articleId Int
+  
+  parent    Comment? @relation("CommentReplies", fields: [parentId], references: [id])
+  parentId  Int?
+  replies   Comment[] @relation("CommentReplies")
+  
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@index([articleId])
+  @@index([approved])
+  @@index([wpCommentId])
+  @@index([createdAt])
+}
+
+model DataTable {
+  id        Int      @id @default(autoincrement())
+  title     String
+  tableData String
+  slug      String   @unique
+  createdAt DateTime @default(now())
+}

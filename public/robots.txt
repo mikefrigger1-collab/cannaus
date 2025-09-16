@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.cannaus.com.au/sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1
+
+# Block admin areas
+Disallow: /api/
+Disallow: /admin/
