@@ -37,15 +37,7 @@ export async function generateMetadata({ params }) {
   }
 
   const stateName = formatStateName(category)
-  
-  // Get recent articles count for this category
-  const articleCount = await prisma.article.count({
-    where: { 
-      published: true, 
-      type: 'post',
-      category: category
-    }
-  })
+
 
   // Get most recent article for last modified date
   const latestArticle = await prisma.article.findFirst({
@@ -195,30 +187,6 @@ export default async function CategoryPage({ params }) {
     notFound()
   }
 
-  const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString('en-AU', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    })
-  }
-
-  // Get state color for badges
-  const getStateColor = (category) => {
-    const colors = {
-      'nsw': 'bg-blue-100 text-blue-800 border-blue-200',
-      'vic': 'bg-purple-100 text-purple-800 border-purple-200',
-      'qld': 'bg-red-100 text-red-800 border-red-200',
-      'wa': 'bg-yellow-100 text-yellow-800 border-yellow-200',
-      'sa': 'bg-green-100 text-green-800 border-green-200',
-      'tas': 'bg-indigo-100 text-indigo-800 border-indigo-200',
-      'act': 'bg-pink-100 text-pink-800 border-pink-200',
-      'nt': 'bg-orange-100 text-orange-800 border-orange-200',
-      'national': 'bg-gray-100 text-gray-800 border-gray-200',
-      'international': 'bg-emerald-100 text-emerald-800 border-emerald-200'
-    }
-    return colors[category] || 'bg-gray-100 text-gray-800 border-gray-200'
-  }
 
   // Helper function to truncate text
   const truncateText = (html, maxLength) => {

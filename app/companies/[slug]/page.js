@@ -189,7 +189,7 @@ function CompanyLogo({ featuredImage, title, className = "" }) {
 }
 
 // Component for company logo/featured image
-function CompanyHero({ featuredImage, title, category, className = "" }) {
+function CompanyHero({ featuredImage, title, className = "" }) {
   if (!featuredImage) {
     return (
       <div className={`flex items-center justify-center ${className}`}>
@@ -513,27 +513,6 @@ export default async function CompanyPage({ params }) {
     showLogo: true,
     showNavigation: true,
     showSubtitle: false
-  }
-
-  const getStateColor = (category) => {
-    const colors = {
-      'nsw': 'bg-blue-100 text-blue-800',
-      'vic': 'bg-purple-100 text-purple-800',
-      'qld': 'bg-red-100 text-red-800',
-      'wa': 'bg-yellow-100 text-yellow-800',
-      'sa': 'bg-green-100 text-green-800',
-      'tas': 'bg-indigo-100 text-indigo-800',
-      'act': 'bg-pink-100 text-pink-800',
-      'nt': 'bg-orange-100 text-orange-800',
-      'national': 'bg-gray-100 text-gray-800',
-      'international': 'bg-emerald-100 text-emerald-800'
-    }
-    return colors[category] || 'bg-gray-100 text-gray-800'
-  }
-
-  const truncateText = (text, length) => {
-    const plainText = text.replace(/<[^>]*>/g, '')
-    return plainText.length > length ? `${plainText.substring(0, length)}...` : plainText
   }
 
   // Enhanced structured data for companies

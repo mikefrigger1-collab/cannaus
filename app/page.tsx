@@ -1,6 +1,4 @@
 import { PrismaClient } from '@prisma/client'
-import Link from 'next/link'
-import Image from 'next/image'
 import MainLayout from '../components/MainLayout'
 import HomeClient from '../components/HomeClient'
 
@@ -23,10 +21,6 @@ export async function generateMetadata() {
     where: { published: true, type: 'post' },
     _count: { category: true }
   })
-
-const stateCount = categoryStats.filter(stat => 
-  stat.category && ['nsw', 'vic', 'qld', 'wa', 'sa', 'tas', 'act', 'nt'].includes(stat.category)
-).length
 
   // Get most recent article for freshness
   const latestArticle = await prisma.article.findFirst({
@@ -93,25 +87,6 @@ const stateCount = categoryStats.filter(stat =>
     ...(latestArticle && {
       lastModified: latestArticle.createdAt,
     }),
-  }
-}
-
-const getDaysAgo = (dateString) => {
-  if (!dateString) return '0 days ago'
-  
-  try {
-    const date = new Date(dateString)
-    if (isNaN(date.getTime())) return '0 days ago'
-    
-    const now = new Date()
-    const diffInTime = now.getTime() - date.getTime()
-    const diffInDays = Math.floor(diffInTime / (1000 * 3600 * 24))
-    
-    if (diffInDays === 0) return 'Today'
-    if (diffInDays === 1) return '1 day ago'
-    return `${diffInDays} days ago`
-  } catch (error) {
-    return '0 days ago'
   }
 }
 

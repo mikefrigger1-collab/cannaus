@@ -56,16 +56,12 @@ function CompanyLogo({ featuredImage, title, className = "" }) {
 
 // Enhanced Filter Component
 function CompanyFilters({ 
-  categories, 
   selectedCategory, 
-  onCategoryChange, 
   companyTypes,
   selectedCompanyType,
   onCompanyTypeChange,
   searchQuery, 
   onSearchChange,
-  totalCount,
-  filteredCount 
 }) {
   const formatStateName = (category) => {
     const stateNames = {
@@ -103,7 +99,6 @@ function CompanyFilters({
     return typeNames[type] || type.replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
   }
 
-  const hasActiveFilters = selectedCategory || selectedCompanyType || searchQuery
 
   return (
  <div className="flex justify-center">
@@ -171,21 +166,6 @@ export default function CompaniesClient({ companies: initialCompanies }) {
     return stateNames[category] || category.toUpperCase()
   }
 
-  const getStateColor = (category) => {
-    const colors = {
-      'nsw': 'bg-blue-50 text-blue-700 border-blue-200',
-      'vic': 'bg-purple-50 text-purple-700 border-purple-200',
-      'qld': 'bg-red-50 text-red-700 border-red-200',
-      'wa': 'bg-yellow-50 text-yellow-700 border-yellow-200',
-      'sa': 'bg-green-50 text-green-700 border-green-200',
-      'tas': 'bg-indigo-50 text-indigo-700 border-indigo-200',
-      'act': 'bg-pink-50 text-pink-700 border-pink-200',
-      'nt': 'bg-orange-50 text-orange-700 border-orange-200',
-      'national': 'bg-gray-50 text-gray-700 border-gray-200',
-      'international': 'bg-emerald-50 text-emerald-700 border-emerald-200'
-    }
-    return colors[category] || 'bg-gray-50 text-gray-700 border-gray-200'
-  }
 
   const getCleanDescription = (content) => {
     let cleanText = content.replace(/<[^>]*>/g, ' ')
