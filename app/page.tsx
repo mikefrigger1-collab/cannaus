@@ -260,32 +260,34 @@ export default async function Home() {
     ]
   }
 
-  // Add recent articles to structured data
-  if (latestArticles.length > 0) {
-    structuredData["@graph"].push({
-      "@type": "ItemList",
-      "name": "Latest Cannabis News",
-      "description": "Most recent cannabis industry news and updates",
-      "numberOfItems": latestArticles.length,
-      "itemListElement": latestArticles.slice(0, 5).map((article, index) => ({
-        "@type": "ListItem",
-        "position": index + 1,
-        "item": {
-          "@type": "NewsArticle",
-          "headline": article.title,
-          "url": `https://www.cannaus.com.au/${article.category}/${article.slug}`,
-          "datePublished": article.createdAt,
-          "author": {
-            "@type": "Person",
-            "name": "Mike Frigger"
-          },
-          "publisher": {
-            "@id": "https://www.cannaus.com.au/"
-          }
+// Add recent articles to structured data
+if (latestArticles.length > 0) {
+  structuredData["@graph"].push({
+    "@type": "ItemList",
+    "name": "Latest Cannabis News",
+    "description": "Most recent cannabis industry news and updates", 
+    "numberOfItems": latestArticles.length,
+    "itemListElement": latestArticles.slice(0, 5).map((article, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "NewsArticle",
+        "name": article.title, // Add this line
+        "@id": `https://www.cannaus.com.au/${article.category}/${article.slug}`, // Add this line
+        "headline": article.title,
+        "url": `https://www.cannaus.com.au/${article.category}/${article.slug}`,
+        "datePublished": article.createdAt,
+        "author": {
+          "@type": "Person",
+          "name": "Mike Frigger"
+        },
+        "publisher": {
+          "@id": "https://www.cannaus.com.au/"
         }
-      }))
-    })
-  }
+      }
+    }))
+  })
+}
 
   return (
     <>
